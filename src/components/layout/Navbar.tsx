@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Terminal, ArrowRight, Menu, X, Sparkles } from "lucide-react";
+import { Terminal, ArrowRight, Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#tech-stack", label: "Tech Stack" },
   { href: "#projects", label: "Projects" },
   { href: "#why-us", label: "Why Us" },
-  { href: "#process", label: "Process" },
+  { href: "#workflow", label: "Workflow" },
   { href: "#contact", label: "Contact" },
 ];
 

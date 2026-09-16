@@ -9,13 +9,12 @@ const rotatingWords = [
   "High-Performance Web Platforms.",
   "Unified iOS & Android Ecosystems.",
 ];
-
 // শুধুমাত্র Web ও Flutter কেন্দ্রিক টেক স্ট্যাক
 const techOrbit = [
   {
     name: "Flutter",
-    role: "Cross-Platform",
-    color: "from-sky-500/20 to-blue-500/10 border-sky-400/40 text-sky-400 shadow-[0_0_22px_rgba(56,189,248,0.25)]",
+    role: "Cross-Platform Engine",
+    color: "from-sky-500/20 to-blue-500/10 border-sky-400/40 text-sky-400 shadow-[0_0_24px_rgba(56,189,248,0.25)]",
     x: "100%",
     y: "50%",
     svg: (
@@ -25,9 +24,9 @@ const techOrbit = [
     ),
   },
   {
-    name: "Next.js",
-    role: "Production Web",
-    color: "from-white/20 to-slate-500/10 border-white/40 text-white shadow-[0_0_22px_rgba(255,255,255,0.2)]",
+    name: "Next.js 16",
+    role: "Edge Web Architecture",
+    color: "from-white/20 to-slate-500/10 border-white/40 text-white shadow-[0_0_24px_rgba(255,255,255,0.2)]",
     x: "75%",
     y: "93.3%",
     svg: (
@@ -36,7 +35,7 @@ const techOrbit = [
           <circle cx="90" cy="90" fill="black" r="90" />
         </mask>
         <g mask="url(#hero_mask_next)">
-          <circle cx="90" cy="90" data-framer-name="base" fill="black" r="90" />
+          <circle cx="90" cy="90" fill="black" />
           <path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z" fill="white" />
           <rect fill="white" height="72" width="12" x="115" y="54" />
         </g>
@@ -45,8 +44,8 @@ const techOrbit = [
   },
   {
     name: "Apple iOS",
-    role: "App Store",
-    color: "from-rose-500/20 to-orange-500/10 border-rose-400/40 text-rose-400 shadow-[0_0_22px_rgba(251,113,133,0.2)]",
+    role: "Native Ecosystem",
+    color: "from-rose-500/20 to-orange-500/10 border-rose-400/40 text-rose-400 shadow-[0_0_24px_rgba(251,113,133,0.2)]",
     x: "25%",
     y: "93.3%",
     svg: (
@@ -57,8 +56,8 @@ const techOrbit = [
   },
   {
     name: "Android",
-    role: "Play Store",
-    color: "from-emerald-500/20 to-teal-500/10 border-emerald-400/40 text-emerald-400 shadow-[0_0_22px_rgba(52,211,153,0.2)]",
+    role: "Google Play Core",
+    color: "from-emerald-500/20 to-teal-500/10 border-emerald-400/40 text-emerald-400 shadow-[0_0_24px_rgba(52,211,153,0.2)]",
     x: "0%",
     y: "50%",
     svg: (
@@ -68,38 +67,36 @@ const techOrbit = [
     ),
   },
   {
-    name: "React",
-    role: "Web Frontend",
-    color: "from-cyan-500/20 to-blue-500/10 border-cyan-400/40 text-cyan-400 shadow-[0_0_22px_rgba(34,211,238,0.2)]",
+    name: "REST API",
+    role: "Edge Microservices",
+    color: "from-amber-500/20 to-orange-500/10 border-amber-400/40 text-amber-400 shadow-[0_0_24px_rgba(245,158,11,0.2)]",
     x: "25%",
     y: "6.7%",
     svg: (
-      <svg className="w-5 h-5" viewBox="-11.5 -10.23174 23 20.46348" fill="currentColor">
-        <circle cx="0" cy="0" r="2.05" fill="currentColor" />
-        <g stroke="currentColor" strokeWidth="1" fill="none">
-          <ellipse rx="11" ry="4.2" />
-          <ellipse rx="11" ry="4.2" transform="rotate(60)" />
-          <ellipse rx="11" ry="4.2" transform="rotate(120)" />
-        </g>
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+        <path d="M8 17h8" />
+        <path d="m13 14 3 3-3 3" />
+        <path d="m11 20-3-3 3-3" />
       </svg>
     ),
   },
   {
-    name: "Dart",
-    role: "Core Engine",
-    color: "from-blue-500/20 to-cyan-500/10 border-blue-400/40 text-blue-400 shadow-[0_0_22px_rgba(59,130,246,0.2)]",
+    name: "Python",
+    role: "Backend & AI Core",
+    color: "from-yellow-500/20 to-blue-500/10 border-yellow-400/40 text-yellow-400 shadow-[0_0_24px_rgba(234,179,8,0.2)]",
     x: "75%",
     y: "6.7%",
     svg: (
-      <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M4.105 4.105L12 0l7.895 4.105L12 8.21 4.105 4.105zm0 15.79L12 24l7.895-4.105L12 15.79l-7.895 4.105zM0 12l4.105-7.895L12 8.21 7.895 12 12 15.79 4.105 19.895 0 12zm24 0l-4.105 7.895L12 15.79l4.105-3.79L12 8.21l7.895-4.105L24 12z" />
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.006 2.753h5.803v.826H3.896S0 5.79 0 11.936c0 6.148 3.402 5.922 3.402 5.922h2.033v-2.852s-.11-3.402 3.345-3.402h5.753V9.098s.44-5.26-6.62-5.26zm-2.07 1.706a1.002 1.002 0 1 1 0 2.004 1.002 1.002 0 0 1 0-2.004zM12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.006-2.753h-5.803v-.826h8.113S24 18.21 24 12.064c0-6.148-3.402-5.922-3.402-5.922h-2.033v2.852s.11 3.402-3.345 3.402H9.467v2.506s-.44 5.26 6.62 5.26zm2.07-1.706a1.002 1.002 0 1 1 0-2.004 1.002 1.002 0 0 1 0 2.004z" />
       </svg>
     ),
   },
 ];
 
 export default function Hero() {
-  const [hoveredTech, setHoveredTech] = useState<string | null>(null);
+  const [hoveredTech, setHoveredTech] = useState<{ name: string; role: string } | null>(null);
 
   const [wordIndex, setWordIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
@@ -127,18 +124,18 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[88vh] flex flex-col justify-center overflow-hidden bg-[#070b14] pt-24 pb-14 px-6 border-b border-white/6">
-      <div className="absolute top-1/3 right-1/4 w-95 h-95 bg-cyan-500/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-cyan-500/10 blur-[130px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
+
           <div className="lg:col-span-7 flex flex-col items-start text-left z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-400 text-xs font-medium mb-5 backdrop-blur-md">
               <Sparkles size={13} className="text-cyan-400" />
               <span>Dedicated Web & Flutter Engineering Studio</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-white leading-[1.2] mb-4 min-h-23.75 sm:min-h-27.5">
+            <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-white leading-[1.2] mb-4 min-h-20 sm:min-h-24">
               Empowering High-Growth Businesses with Custom <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-teal-300 to-sky-400">
                 {rotatingWords[wordIndex].substring(0, subIndex)}
@@ -147,7 +144,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-sm text-slate-400 max-w-lg mb-7 leading-relaxed font-normal">
-              আমরা একক কোডবেসে iOS ও Android-এর জন্য প্রিমিয়াম Flutter অ্যাপ এবং Next.js দিয়ে দ্রুতগতির আধুনিক ওয়েব প্ল্যাটফর্ম ডেভেলপ করি।
+              আমরা একক কোডবেসে iOS ও Android-এর জন্য প্রিমিয়াম Flutter অ্যাপ এবং Next.js দিয়ে দ্রুতগতির আধুনিক ওয়েব প্ল্যাটফর্ম ডেভেলপ করি।
             </p>
 
             <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto mb-9">
@@ -159,7 +156,7 @@ export default function Hero() {
                 <ArrowRight size={14} />
               </Link>
               <Link
-                href="#portfolio"
+                href="#projects"
                 className="px-5 py-2.5 rounded-lg border border-white/15 bg-white/2 hover:bg-white/6 text-slate-300 font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-1"
               >
                 <span>View Live Products</span>
@@ -190,19 +187,24 @@ export default function Hero() {
 
           </div>
 
-          <div className="lg:col-span-5 flex items-center justify-center pause-on-hover relative min-h-85 sm:min-h-105">
-            <div className="absolute w-70 h-70 sm:w-90 sm:h-90 rounded-full border border-white/[0.07] pointer-events-none" />
-            <div className="absolute w-47.5 h-47.5 sm:w-62.5 sm:h-62.5 rounded-full border border-white/4 pointer-events-none" />
+          <div className="lg:col-span-5 flex items-center justify-center pause-on-hover relative min-h-115 sm:min-h-140">
+            {/* বড় বাইরের রিং (360px -> 480px) */}
+            <div className="absolute w-90 h-90 sm:w-120 sm:h-120 rounded-full border border-white/[0.07] pointer-events-none" />
 
-            <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full border border-cyan-500/30 bg-slate-950/90 backdrop-blur-xl flex flex-col items-center justify-center text-center shadow-[0_0_25px_rgba(6,182,212,0.2)] p-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping mb-1" />
-              <span className="text-xs font-mono text-cyan-400 font-bold tracking-wider">MHS LABS</span>
-              <span className="text-[10px] text-slate-400 font-mono mt-0.5">
-                {hoveredTech ? hoveredTech : "WEB & FLUTTER"}
+            {/* বড় ভেতরের রিং (240px -> 320px) */}
+            <div className="absolute w-60 h-60 sm:w-80 sm:h-80 rounded-full border border-white/4 pointer-events-none" />
+
+            {/* বড় সেন্টার নোড */}
+            <div className="relative z-10 w-32 h-32 sm:w-36 sm:h-36 rounded-full border border-cyan-500/30 bg-slate-950/90 backdrop-blur-xl flex flex-col items-center justify-center text-center shadow-[0_0_35px_rgba(6,182,212,0.25)] p-3">
+              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping mb-1.5" />
+              <span className="text-sm font-mono text-cyan-400 font-bold tracking-wider">MHS LABS</span>
+              <span className="text-xs text-slate-400 font-mono mt-0.5 max-w-27.5 truncate">
+                {hoveredTech ? hoveredTech.name : "WEB & FLUTTER"}
               </span>
             </div>
 
-            <div className="absolute w-70 h-70 sm:w-90 sm:h-90 rounded-full animate-orbit pointer-events-none">
+            {/* বড় অরবিট পাথ ও আইকনসমূহ */}
+            <div className="absolute w-90 h-90 sm:w-120 sm:h-120 rounded-full animate-orbit pointer-events-none">
               {techOrbit.map((tech) => (
                 <div
                   key={tech.name}
@@ -212,13 +214,13 @@ export default function Hero() {
                     top: tech.y,
                     transform: "translate(-50%, -50%)",
                   }}
-                  onMouseEnter={() => setHoveredTech(tech.name)}
+                  onMouseEnter={() => setHoveredTech({ name: tech.name, role: tech.role })}
                   onMouseLeave={() => setHoveredTech(null)}
                 >
                   <div className="animate-counter-rotate">
                     <div
                       title={`${tech.name} • ${tech.role}`}
-                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900/95 bg-linear-to-br ${tech.color} backdrop-blur-xl border flex items-center justify-center cursor-pointer hover:scale-125 transition-transform duration-300`}
+                      className={`w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-slate-950/90 bg-gradient-to-br ${tech.color} backdrop-blur-xl border flex items-center justify-center cursor-pointer hover:scale-125 transition-transform duration-300`}
                     >
                       {tech.svg}
                     </div>
@@ -226,7 +228,6 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-
           </div>
 
         </div>
