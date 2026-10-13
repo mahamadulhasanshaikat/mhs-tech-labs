@@ -1,23 +1,39 @@
+// src/app/page.tsx
+
+import AiRoadmap from "@/components/sections/AiRoadmap";
+import ArchitectureLab from "@/components/sections/ArchitectureLab";
+import BentoFeatures from "@/components/sections/BentoFeatures";
+import Faq from "@/components/sections/Faq";
 import Hero from "@/components/sections/Hero";
-import About from "@/components/sections/About";
+import Pricing from "@/components/sections/Pricing";
+import ScrollProgress from "@/components/sections/ScrollProgress";
 import Services from "@/components/sections/Services";
+import SmoothScroll from "@/components/sections/SmoothScroll";
+import Solutions from "@/components/sections/Solutions";
 import TechStack from "@/components/sections/TechStack";
-import Projects from "@/components/sections/Projects";
-import WhyUs from "@/components/sections/WhyUs";
+import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
 import Workflow from "@/components/sections/Workflow";
 
+
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen bg-[#070b14]">
-      <Hero />
-      <About />
-      <Services />
-      <TechStack />
-      <Projects />
-      <Workflow />
-      <WhyUs />
-      <Contact />
-    </main>
+    <SmoothScroll>
+      <main className="min-h-screen relative">
+        <ScrollProgress />
+        <Hero />
+        <Services />
+        <BentoFeatures />
+        <TechStack />
+        <ArchitectureLab />
+        <Workflow />
+        <AiRoadmap />
+        <Solutions />
+        <Testimonials />
+        <Pricing />
+        <Faq />
+        <Contact />
+      </main>
+    </SmoothScroll>
   );
 }
