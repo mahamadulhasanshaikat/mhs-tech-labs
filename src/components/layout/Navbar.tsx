@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
-import Logo from "../sections/Logo";
+import Logo from "../logo/Logo";
 import ThemeToggle from "../theme/ThemeToggle";
 const navLinks = [
   { name: "Services", href: "#services" },

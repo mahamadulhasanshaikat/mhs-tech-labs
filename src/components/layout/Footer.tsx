@@ -1,7 +1,7 @@
 // src/components/Footer.tsx
 import Link from "next/link";
 import { companyInfo, siteConfig } from "@/data/company";
-import Logo from "../sections/Logo";
+import Logo from "../logo/Logo";
 
 export default function Footer() {
   return (

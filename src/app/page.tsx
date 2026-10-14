@@ -1,19 +1,16 @@
 // src/app/page.tsx
-
-import AiRoadmap from "@/components/sections/AiRoadmap";
 import ArchitectureLab from "@/components/sections/ArchitectureLab";
-import BentoFeatures from "@/components/sections/BentoFeatures";
 import Faq from "@/components/sections/Faq";
 import Hero from "@/components/sections/Hero";
 import Pricing from "@/components/sections/Pricing";
-import ScrollProgress from "@/components/sections/ScrollProgress";
+import ScrollProgress from "@/components/animation/ScrollProgress";
 import Services from "@/components/sections/Services";
-import SmoothScroll from "@/components/sections/SmoothScroll";
+import SmoothScroll from "@/components/animation/SmoothScroll";
 import Solutions from "@/components/sections/Solutions";
 import TechStack from "@/components/sections/TechStack";
-import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
 import Workflow from "@/components/sections/Workflow";
+import Reviews from "@/components/sections/Reviews";
 
 
 export default function Home() {
@@ -23,14 +20,12 @@ export default function Home() {
         <ScrollProgress />
         <Hero />
         <Services />
-        <BentoFeatures />
         <TechStack />
         <ArchitectureLab />
         <Workflow />
-        <AiRoadmap />
         <Solutions />
-        <Testimonials />
         <Pricing />
+        <Reviews />
         <Faq />
         <Contact />
       </main>
