@@ -1,22 +1,22 @@
-// src/components/Navbar.tsx
+// Navbar.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import Logo from "../logo/Logo";
 import ThemeToggle from "../theme/ThemeToggle";
+
 const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Tech Stack", href: "#stack" },
-  { name: "AI Lab", href: "#ai-lab", isSpecial: true },
   { name: "Solutions", href: "#solutions" },
   { name: "Pricing", href: "#pricing" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("services");
+  const [activeSection, setActiveSection] = useState("hero");
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -24,7 +24,15 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const scrollPosition = window.scrollY + 140;
+      const scrollPosition = window.scrollY + 180;
+      const servicesEl = document.getElementById("services");
+
+      // Hero সেকশনে থাকলে কোনো মেনু সিলেক্ট থাকবে না, শুধু লোগো অ্যাক্টিভ থাকবে
+      if (!servicesEl || scrollPosition < servicesEl.offsetTop) {
+        setActiveSection("hero");
+        return;
+      }
+
       navLinks.forEach((link) => {
         const id = link.href.replace("#", "");
         const el = document.getElementById(id);
@@ -38,6 +46,7 @@ export default function Navbar() {
       });
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -68,9 +77,11 @@ export default function Navbar() {
 
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    e.currentTarget.blur(); // নীল ফোকাস বক্স আসা বন্ধ করবে
+    e.currentTarget.blur();
     window.scrollTo({ top: 0, behavior: "smooth" });
+    setActiveSection("hero");
     window.history.pushState(null, "", "/");
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -85,7 +96,7 @@ export default function Navbar() {
             : "bg-white/80 dark:bg-slate-900/80 border-slate-200/70 dark:border-slate-800/70 shadow-lg backdrop-blur-lg"
         }`}
       >
-        {/* Left: Brand Logo (No Blue Focus Box) */}
+        {/* Left: Brand Logo */}
         <a
           href="#"
           onClick={scrollToTop}
@@ -95,7 +106,7 @@ export default function Navbar() {
           <Logo />
         </a>
 
-        {/* Center: Clean Single-Line Navigation Pill */}
+        {/* Center: Navigation Links */}
         <div className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/50">
           {navLinks.map((link, idx) => {
             const isTargetActive =
@@ -110,7 +121,7 @@ export default function Navbar() {
                 onMouseDown={(e) => e.preventDefault()}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
-                className={`relative px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer flex items-center gap-1.5 outline-none focus:outline-none ${
+                className={`relative px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer flex items-center outline-none focus:outline-none ${
                   isTargetActive
                     ? "text-blue-600 dark:text-cyan-400"
                     : "text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white"
@@ -120,7 +131,7 @@ export default function Navbar() {
                   <motion.span
                     layoutId="activeNavIndicator"
                     className="pointer-events-none absolute inset-0 rounded-full bg-white dark:bg-slate-950 shadow-xs border border-slate-200/70 dark:border-slate-700/70 -z-10"
-                    transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
                   />
                 )}
 
@@ -132,19 +143,13 @@ export default function Navbar() {
                   />
                 )}
 
-                {link.isSpecial && (
-                  <Sparkles
-                    size={12}
-                    className="text-blue-600 dark:text-cyan-400 shrink-0"
-                  />
-                )}
                 <span>{link.name}</span>
               </a>
             );
           })}
         </div>
 
-        {/* Right Controls */}
+        {/* Right: Theme Switcher & CTA */}
         <div className="flex items-center gap-2.5 shrink-0">
           <ThemeToggle />
 
@@ -199,12 +204,7 @@ export default function Navbar() {
                         : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                     }`}
                   >
-                    <span className="flex items-center gap-2">
-                      {link.isSpecial && (
-                        <Sparkles size={14} className="text-blue-500" />
-                      )}
-                      {link.name}
-                    </span>
+                    <span>{link.name}</span>
                     <ArrowUpRight size={14} className="opacity-50" />
                   </a>
                 );

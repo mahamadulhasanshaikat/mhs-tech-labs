@@ -41,124 +41,157 @@
 
 
 
+// src/components/logo/Logo.tsx
 "use client";
 
-export default function Logo() {
+interface LogoProps {
+  isActive?: boolean;
+  className?: string;
+}
+
+export default function Logo({ isActive = false, className = "" }: LogoProps) {
   return (
-    <div className="group inline-flex items-center gap-2.5 select-none">
-      {/* Premium Circular MHS Emblem */}
-      <div className="relative h-10 w-10 shrink-0 transition-transform duration-300 group-hover:scale-105">
+    <div
+      className={`group inline-flex items-center gap-3 select-none outline-none ${className}`}
+    >
+      {/* Ultra-Clean 3D Circular MHS Emblem */}
+      <div className="relative h-10.5 w-10.5 shrink-0 transition-transform duration-300 group-hover:scale-105">
+        {/* Soft Ambient Hover Glow */}
+        <div
+          className={`absolute -inset-0.5 rounded-full bg-linear-to-tr from-blue-600 via-indigo-500 to-cyan-400 blur-[3px] transition-opacity duration-300 ${
+            isActive ? "opacity-45" : "opacity-20 group-hover:opacity-55"
+          }`}
+        />
+
         <svg
           viewBox="0 0 100 100"
-          className="h-full w-full"
+          className="relative z-10 h-full w-full"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
         >
           <defs>
-            <linearGradient id="mhs-metal-border" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#F9FAFB" />
-              <stop offset="25%" stopColor="#9CA3AF" />
-              <stop offset="48%" stopColor="#E5E7EB" />
-              <stop offset="75%" stopColor="#6B7280" />
-              <stop offset="100%" stopColor="#D1D5DB" />
+            {/* Outer Precision Bezel Gradient */}
+            <linearGradient
+              id="mhs-outer-rim"
+              x1="0"
+              y1="0"
+              x2="100"
+              y2="100"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0%" stopColor="#38BDF8" />
+              <stop offset="35%" stopColor="#E2E8F0" />
+              <stop offset="70%" stopColor="#3B82F6" />
+              <stop offset="100%" stopColor="#22D3EE" />
             </linearGradient>
 
-            <radialGradient id="mhs-dark-center" cx="30%" cy="20%" r="100%">
-              <stop offset="0%" stopColor="#374151" />
-              <stop offset="55%" stopColor="#1F2937" />
-              <stop offset="100%" stopColor="#111827" />
+            {/* Deep Midnight Obsidian Core */}
+            <radialGradient id="mhs-core-bg" cx="35%" cy="25%" r="80%">
+              <stop offset="0%" stopColor="#1E293B" />
+              <stop offset="55%" stopColor="#090D16" />
+              <stop offset="100%" stopColor="#020617" />
             </radialGradient>
 
-            <linearGradient id="mhs-silver-letters" x1="0" y1="0" x2="0" y2="1">
+            {/* Crisp Platinum White Gradient for M & S */}
+            <linearGradient
+              id="mhs-white-silver"
+              x1="0"
+              y1="35"
+              x2="0"
+              y2="65"
+              gradientUnits="userSpaceOnUse"
+            >
               <stop offset="0%" stopColor="#FFFFFF" />
-              <stop offset="45%" stopColor="#E5E7EB" />
-              <stop offset="100%" stopColor="#9CA3AF" />
+              <stop offset="65%" stopColor="#F1F5F9" />
+              <stop offset="100%" stopColor="#94A3B8" />
+            </linearGradient>
+
+            {/* Electric Cyan-Blue Gradient for H & Horizon Arcs */}
+            <linearGradient
+              id="mhs-electric-cyan"
+              x1="15"
+              y1="20"
+              x2="85"
+              y2="80"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0%" stopColor="#60A5FA" />
+              <stop offset="50%" stopColor="#22D3EE" />
+              <stop offset="100%" stopColor="#38BDF8" />
             </linearGradient>
           </defs>
 
-          {/* Outer silver ring */}
-          <circle cx="50" cy="50" r="48" fill="url(#mhs-metal-border)" />
+          {/* 1. Sleek Metallic-Cyan Outer Ring */}
+          <circle cx="50" cy="50" r="48.5" fill="url(#mhs-outer-rim)" />
 
-          {/* Dark circular body */}
-          <circle
-            cx="50"
-            cy="50"
-            r="44"
-            fill="url(#mhs-dark-center)"
-            stroke="#D1D5DB"
-            strokeWidth="1"
-          />
+          {/* 2. Deep Dark Inner Sphere */}
+          <circle cx="50" cy="50" r="45" fill="url(#mhs-core-bg)" />
 
-          {/* Inner engraved ring */}
-          <circle
-            cx="50"
-            cy="50"
-            r="39.5"
-            stroke="#9CA3AF"
-            strokeWidth="0.8"
-            strokeOpacity="0.8"
-          />
-
-          {/* Upper swoosh */}
+          {/* 3. Top Glass Specular Reflection */}
           <path
-            d="M19 43C32 27 59 19 77 31C65 25 42 29 19 43Z"
-            fill="url(#mhs-silver-letters)"
+            d="M20 28C34 15 66 15 80 28C66 19.5 34 19.5 20 28Z"
+            fill="white"
+            fillOpacity="0.14"
           />
 
-          {/* Unified italic MHS monogram */}
-          <text
-            x="50"
-            y="57"
-            textAnchor="middle"
-            fontFamily="Arial, Helvetica, sans-serif"
-            fontSize="26"
-            fontWeight="900"
-            fontStyle="italic"
-            letterSpacing="-2.2"
-            textLength="61"
-            lengthAdjust="spacingAndGlyphs"
-            fill="url(#mhs-silver-letters)"
-          >
-            MHS
-          </text>
-
-          {/* Lower swoosh */}
+          {/* 4. Upper Dynamic Horizon Wing */}
           <path
-            d="M23 64C34 80 57 77 77 59C64 80 40 85 27 74C25 71 24 68 23 64Z"
-            fill="url(#mhs-metal-border)"
+            d="M25 32.5C39 23.5 61 23.5 75 32.5C61 27.5 39 27.5 25 32.5Z"
+            fill="url(#mhs-electric-cyan)"
           />
 
-          {/* Soft highlight */}
+          {/* 5. Symmetrical Precision Vector "MHS" (Equal Optical Width) */}
+          <g transform="translate(50, 50) skewX(-7) translate(-50, -50)">
+            {/* Balanced 'M' (Width: 22 units) */}
+            <path
+              d="M15 61V39H20.2L26 49.8L31.8 39H37V61H32V47.5L27.3 55.8H24.7L20 47.5V61H15Z"
+              fill="url(#mhs-white-silver)"
+            />
+
+            {/* Balanced 'H' with Cyan Core (Width: 18 units) */}
+            <path
+              d="M41.5 61V39H46.7V47.6H54.3V39H59.5V61H54.3V52.4H46.7V61H41.5Z"
+              fill="url(#mhs-electric-cyan)"
+            />
+
+            {/* Balanced Geometric 'S' (Width: 20 units) */}
+            <path
+              d="M83.5 39H67.5L64 42.5V48.8L67.5 52.2H78.2V56.4H64V61H80L83.5 57.5V50.4L80 47H69.2V43.5H83.5V39Z"
+              fill="url(#mhs-white-silver)"
+            />
+          </g>
+
+          {/* 6. Lower Dynamic Horizon Wing */}
           <path
-            d="M17 38A38 38 0 0 1 43 14"
-            stroke="white"
-            strokeWidth="1"
-            strokeOpacity=".6"
-            strokeLinecap="round"
+            d="M25 67.5C39 72.5 61 72.5 75 67.5C61 76.5 39 76.5 25 67.5Z"
+            fill="url(#mhs-electric-cyan)"
           />
         </svg>
       </div>
 
-      {/* Brand Typography */}
+      {/* Executive Brand Wordmark */}
       <div className="flex flex-col justify-center whitespace-nowrap">
-        <div className="flex items-center gap-1 leading-none">
-          <span className="text-[17px] font-black tracking-tight text-gray-950 dark:text-white">
+        <div className="flex items-center gap-1.5 leading-none">
+          <span className="text-[18px] font-black tracking-tight text-slate-950 dark:text-white">
             MHS
           </span>
 
-          <span className="text-[17px] font-extrabold tracking-tight text-gray-500 dark:text-gray-300">
+          <span className="text-[18px] font-extrabold tracking-tight bg-linear-to-r from-blue-600 via-indigo-500 to-cyan-500 dark:from-blue-400 dark:via-indigo-400 dark:to-cyan-300 bg-clip-text text-transparent">
             Tech Lab
           </span>
         </div>
 
-        {/* Tagline */}
-        <span className="mt-1.5 text-[9px] font-mono font-semibold uppercase tracking-[0.14em] text-gray-500 dark:text-gray-400">
-          WEB <span className="text-gray-400">•</span> MOBILE{" "}
-          <span className="text-gray-400">•</span> AI
-        </span>
+        {/* Crisp Subtitle Strip */}
+        <div className="mt-1.5 flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.7)]" />
+          <span className="text-[9.5px] font-mono font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">
+            WEB <span className="text-blue-500 dark:text-cyan-400">•</span>{" "}
+            MOBILE <span className="text-blue-500 dark:text-cyan-400">•</span>{" "}
+            AI
+          </span>
+        </div>
       </div>
     </div>
   );
 }
-
