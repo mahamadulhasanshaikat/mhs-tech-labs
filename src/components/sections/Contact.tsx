@@ -70,7 +70,7 @@ export default function Contact() {
       className="relative scroll-mt-36 pt-24 pb-20 sm:pt-32 sm:pb-24 px-4 sm:px-6 max-w-6xl mx-auto select-none overflow-hidden"
     >
       {/* Background Soft Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[360px] bg-linear-to-tr from-blue-600/10 via-indigo-500/8 to-cyan-400/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-180 h-90 bg-linear-to-tr from-blue-600/10 via-indigo-500/8 to-cyan-400/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       {/* Standardized Header */}
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">

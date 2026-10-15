@@ -1,4 +1,4 @@
-// Navbar.tsx
+// src/components/Navbar.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -10,8 +10,9 @@ import ThemeToggle from "../theme/ThemeToggle";
 const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Tech Stack", href: "#stack" },
+  { name: "Lifecycle", href: "#lifecycle" },
   { name: "Solutions", href: "#solutions" },
-  { name: "Pricing", href: "#pricing" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -27,7 +28,6 @@ export default function Navbar() {
       const scrollPosition = window.scrollY + 180;
       const servicesEl = document.getElementById("services");
 
-      // Hero সেকশনে থাকলে কোনো মেনু সিলেক্ট থাকবে না, শুধু লোগো অ্যাক্টিভ থাকবে
       if (!servicesEl || scrollPosition < servicesEl.offsetTop) {
         setActiveSection("hero");
         return;
@@ -90,11 +90,10 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className={`pointer-events-auto relative w-full max-w-5xl flex items-center justify-between gap-4 px-4 sm:px-5 py-2.5 rounded-full border transition-all duration-300 ${
-          isScrolled
+        className={`pointer-events-auto relative w-full max-w-5xl flex items-center justify-between gap-4 px-4 sm:px-5 py-2.5 rounded-full border transition-all duration-300 ${isScrolled
             ? "bg-white/90 dark:bg-slate-900/90 border-slate-200/90 dark:border-slate-800/90 shadow-xl shadow-black/5 dark:shadow-black/30 backdrop-blur-xl"
             : "bg-white/80 dark:bg-slate-900/80 border-slate-200/70 dark:border-slate-800/70 shadow-lg backdrop-blur-lg"
-        }`}
+          }`}
       >
         {/* Left: Brand Logo */}
         <a
@@ -106,8 +105,8 @@ export default function Navbar() {
           <Logo />
         </a>
 
-        {/* Center: Navigation Links */}
-        <div className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/50">
+        {/* Center: Navigation Links (All Important Sections Added) */}
+        <div className="hidden lg:flex items-center gap-0.5 p-1 rounded-full bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/50">
           {navLinks.map((link, idx) => {
             const isTargetActive =
               activeSection === link.href.replace("#", "");
@@ -121,11 +120,10 @@ export default function Navbar() {
                 onMouseDown={(e) => e.preventDefault()}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
-                className={`relative px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer flex items-center outline-none focus:outline-none ${
-                  isTargetActive
+                className={`relative px-3 py-1.5 rounded-full text-[11px] font-semibold whitespace-nowrap transition-colors cursor-pointer flex items-center outline-none focus:outline-none ${isTargetActive
                     ? "text-blue-600 dark:text-cyan-400"
                     : "text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white"
-                }`}
+                  }`}
               >
                 {isTargetActive && (
                   <motion.span
@@ -188,7 +186,7 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="pointer-events-auto absolute top-20 inset-x-4 max-w-md mx-auto p-4 rounded-3xl bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800 shadow-2xl backdrop-blur-2xl lg:hidden"
           >
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 max-h-[75vh] overflow-y-auto pr-1">
               {navLinks.map((link) => {
                 const isTargetActive =
                   activeSection === link.href.replace("#", "");
@@ -198,14 +196,13 @@ export default function Navbar() {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`px-4 py-2.5 rounded-2xl text-sm font-semibold flex items-center justify-between transition cursor-pointer ${
-                      isTargetActive
+                    className={`px-4 py-2 rounded-2xl text-xs font-semibold flex items-center justify-between transition cursor-pointer ${isTargetActive
                         ? "bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-cyan-400"
                         : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-                    }`}
+                      }`}
                   >
                     <span>{link.name}</span>
-                    <ArrowUpRight size={14} className="opacity-50" />
+                    <ArrowUpRight size={13} className="opacity-50" />
                   </a>
                 );
               })}

@@ -121,7 +121,7 @@ const cardItemVariants: Variants = {
 export default function Lifecycle() {
   return (
     <section
-      id="solutions"
+      id="lifecycle"
       className="relative scroll-mt-28 pt-20 pb-20 sm:pt-28 sm:pb-24 px-4 sm:px-6 max-w-6xl mx-auto overflow-hidden select-none"
     >
       {/* Background Soft Ambient Light */}
