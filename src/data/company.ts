@@ -380,7 +380,7 @@ export interface SiteConfig {
 // ==========================================
 
 export const siteConfig: SiteConfig = {
-  version: "1.0.1",
+  version: "1.0.6",
   company: "MHS Tech Lab",
   developer: {
     name: "MHS",
