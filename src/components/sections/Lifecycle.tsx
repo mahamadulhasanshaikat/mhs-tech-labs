@@ -125,7 +125,7 @@ export default function Lifecycle() {
       className="relative scroll-mt-28 pt-20 pb-20 sm:pt-28 sm:pb-24 px-4 sm:px-6 max-w-6xl mx-auto overflow-hidden select-none"
     >
       {/* Background Soft Ambient Light */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[680px] h-[320px] bg-linear-to-tr from-blue-600/10 via-indigo-500/8 to-cyan-400/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-170 h-80 bg-linear-to-tr from-blue-600/10 via-indigo-500/8 to-cyan-400/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-14">

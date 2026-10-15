@@ -42,7 +42,7 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const whatsAppUrl = `https://wa.me/8801700000000?text=${encodeURIComponent(
+  const whatsAppUrl = `https://wa.me/8801939791205?text=${encodeURIComponent(
     "Hello MHS Tech Lab, I would like to consult about an engineering project."
   )}`;
 
@@ -50,7 +50,7 @@ export default function Footer() {
     <footer className="relative w-full border-t border-slate-200/90 dark:border-slate-800/90 bg-white/80 dark:bg-slate-950/80 backdrop-blur-2xl pt-16 pb-12 select-none overflow-hidden">
       {/* Precision Ambient Top Accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-500/60 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[720px] h-[160px] bg-linear-to-b from-blue-600/8 via-cyan-400/5 to-transparent rounded-full blur-[110px] pointer-events-none -z-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-180 h-40 bg-linear-to-b from-blue-600/8 via-cyan-400/5 to-transparent rounded-full blur-[110px] pointer-events-none -z-10" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Main Grid */}

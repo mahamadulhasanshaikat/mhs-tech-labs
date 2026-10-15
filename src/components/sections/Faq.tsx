@@ -21,7 +21,7 @@ export default function Faq() {
       className="relative scroll-mt-28 py-20 sm:py-24 px-4 sm:px-6 max-w-4xl mx-auto select-none overflow-hidden"
     >
       {/* Background Soft Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-linear-to-tr from-blue-600/10 via-indigo-500/8 to-cyan-400/10 rounded-full blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-150 h-75 bg-linear-to-tr from-blue-600/10 via-indigo-500/8 to-cyan-400/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
       {/* Standardized Section Header */}
       <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
