@@ -1,5 +1,4 @@
 // src/app/page.tsx
-import ArchitectureLab from "@/components/sections/ArchitectureLab";
 import Faq from "@/components/sections/Faq";
 import Hero from "@/components/sections/Hero";
 import Pricing from "@/components/sections/Pricing";
@@ -9,8 +8,9 @@ import SmoothScroll from "@/components/animation/SmoothScroll";
 import Solutions from "@/components/sections/Solutions";
 import TechStack from "@/components/sections/TechStack";
 import Contact from "@/components/sections/Contact";
-import Workflow from "@/components/sections/Workflow";
+import Workflow from "@/components/sections/Lifecycle";
 import Reviews from "@/components/sections/Reviews";
+import Architecture from "@/components/sections/Architecture";
 
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
         <Hero />
         <Services />
         <TechStack />
-        <ArchitectureLab />
+        <Architecture />
         <Workflow />
         <Solutions />
         <Pricing />
