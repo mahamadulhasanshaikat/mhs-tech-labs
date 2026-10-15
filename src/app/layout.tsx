@@ -6,7 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "MHS Tech Lab | Web, Flutter Mobile & AI Software Studio",
+  title: "MHS Tech Lab | Modern Software Studio",
   description:
     "MHS Tech Lab engineers high-performance Flutter mobile apps with Riverpod, modern Next.js web applications, Supabase/PostgreSQL backends, and AI/ML solutions.",
 };

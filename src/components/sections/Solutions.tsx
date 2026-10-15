@@ -3,14 +3,13 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Layers, X, CheckCircle2, Cpu } from "lucide-react";
+import { Sparkles, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { featuredSolutions } from "@/data/company";
 
 const categories = ["All", "Mobile", "Web", "AI"];
 
 export default function Solutions() {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [activeModalProject, setActiveModalProject] = useState<(typeof featuredSolutions)[0] | null>(null);
 
   const filtered = featuredSolutions.filter((item) => {
     if (selectedCategory === "All") return true;
@@ -21,27 +20,41 @@ export default function Solutions() {
   });
 
   return (
-    <section id="solutions" className="scroll-mt-24 py-24 px-6 max-w-6xl mx-auto">
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-cyan-300 border border-blue-200/60 dark:border-blue-900/50 mb-3">
-          <Sparkles size={12} />
-          <span>Engineered Architecture</span>
-        </div>
-        <h2 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white mb-4">
-          Featured Lab Solutions
-        </h2>
-        <div className="w-12 h-1 bg-linear-to-r from-blue-600 to-cyan-400 mx-auto rounded-full mb-8" />
+    <section
+      id="solutions"
+      className="relative scroll-mt-28 py-20 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto select-none"
+    >
+      {/* Background Soft Glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[680px] h-[320px] bg-linear-to-tr from-blue-600/10 via-indigo-500/8 to-cyan-400/10 rounded-full blur-[140px] pointer-events-none -z-10" />
 
-        {/* Filter Buttons */}
-        <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+      {/* Header */}
+      <div className="text-center max-w-2xl mx-auto mb-10">
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800/90 shadow-2xs backdrop-blur-xl mb-3">
+          <Sparkles size={12} className="text-blue-600 dark:text-cyan-400" />
+          <span className="text-[10.5px] font-mono font-bold uppercase tracking-widest text-slate-800 dark:text-slate-200">
+            Engineered Architecture
+          </span>
+        </div>
+        <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-950 dark:text-white leading-[1.12] mb-3">
+          Featured Lab{" "}
+          <span className="bg-linear-to-r from-blue-600 via-indigo-500 to-cyan-400 bg-clip-text text-transparent">
+            Solutions.
+          </span>
+        </h2>
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
+          Production systems engineered for cross-platform scale, real-time sync, and fault tolerance.
+        </p>
+
+        {/* Filter Badges */}
+        <div className="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 mt-6">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`px-4 py-1.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
                 selectedCategory === cat
-                  ? "bg-blue-600 text-white shadow-xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  ? "bg-white dark:bg-slate-800 text-blue-600 dark:text-cyan-400 shadow-2xs"
+                  : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               {cat}
@@ -50,129 +63,58 @@ export default function Solutions() {
         </div>
       </div>
 
-      {/* Project Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-        {filtered.map((item, idx) => (
-          <motion.div
-            key={item.title}
-            layout
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: idx * 0.06 }}
-            className="group p-7 rounded-3xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800/90 hover:border-blue-500/40 shadow-md flex flex-col justify-between"
-          >
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-4">
-                <span className="px-3 py-1 rounded-full text-xs font-mono font-medium bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-cyan-300 border border-blue-200/60 dark:border-blue-900/50">
-                  {item.category}
-                </span>
-                <button
-                  onClick={() => setActiveModalProject(item)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white dark:hover:bg-cyan-400 dark:hover:text-slate-950 transition-colors cursor-pointer"
-                >
-                  <Layers size={13} />
-                  <span>Blueprint</span>
-                </button>
-              </div>
-
-              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white mb-2.5 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
-                {item.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                {item.description}
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-1.5">
-              {item.tech.map((t) => (
-                <span
-                  key={t}
-                  className="px-2.5 py-1 rounded-lg text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* System Architecture Modal Popup */}
-      <AnimatePresence>
-        {activeModalProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md"
-            onClick={() => setActiveModalProject(null)}
-          >
+      {/* Balanced Cards Grid */}
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        <AnimatePresence mode="popLayout">
+          {filtered.map((item, idx) => (
             <motion.div
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-lg p-7 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl space-y-5"
+              key={item.title}
+              layout
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.28, delay: idx * 0.05 }}
+              whileHover={{ y: -4 }}
+              className="group p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800/80 hover:border-blue-500/50 dark:hover:border-cyan-400/50 shadow-xs hover:shadow-xl backdrop-blur-xl transition-all duration-300 flex flex-col justify-between text-left"
             >
-              <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
-                <div className="flex items-center gap-2 text-blue-600 dark:text-cyan-400 font-mono text-xs font-bold uppercase">
-                  <Cpu size={16} />
-                  <span>System Architecture Spec</span>
-                </div>
-                <button
-                  onClick={() => setActiveModalProject(null)}
-                  className="p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-
               <div>
-                <span className="text-xs font-mono text-blue-600 dark:text-cyan-400">
-                  {activeModalProject.category}
-                </span>
-                <h3 className="text-2xl font-black text-slate-900 dark:text-white mt-1">
-                  {activeModalProject.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
-                  {activeModalProject.description}
-                </p>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/70 dark:border-slate-800 space-y-2">
-                <p className="text-xs font-bold text-slate-900 dark:text-white">
-                  Key Engineering Pillars:
-                </p>
-                <div className="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
-                    <span>Reactive State & Modular Clean Architecture</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
-                    <span>Real-Time Cloud Sync + Offline SQLite Resilience</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
-                    <span>Role-Based Security & Scalable REST Endpoints</span>
-                  </div>
+                {/* Card Top Meta */}
+                <div className="flex items-center justify-between gap-2 mb-3.5">
+                  <span className="text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950/70 text-blue-600 dark:text-cyan-400 border border-blue-200/60 dark:border-blue-900/60">
+                    {item.category}
+                  </span>
+                  <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    Production Ready
+                  </span>
                 </div>
+
+                {/* Title */}
+                <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                  {item.description}
+                </p>
               </div>
 
-              <div className="flex flex-wrap gap-1.5 pt-2">
-                {activeModalProject.tech.map((t) => (
+              {/* Tech Stack Mini Tags */}
+              <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-2">
+                {item.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-3 py-1 rounded-xl text-xs font-mono bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-cyan-300 border border-blue-200/60 dark:border-blue-900/50"
+                    className="text-[11px] font-mono font-medium px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60"
                   >
                     {t}
                   </span>
                 ))}
               </div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 }
